@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+	 crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico|Quicksand:300,400|Reem+Kufi" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+	<link rel="stylesheet" href="nerdyStyles.css">
+	<link type="image/png" href="nerdyAssets/favicon/favicon-16x16.png" rel="icon">
+	<link rel="shortcut icon" href="nerdyAssets/dropDown.svg/favicon.ico" type="image/x-icon"/>
+	<link rel="apple-touch-icon" sizes="57x57" href="nerdyAssets/dropDown.svg">
+	<link rel="apple-touch-icon" sizes="60x60" href="nerdyAssets/dropDown.svg/apple-touch-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="nerdyAssets/dropDown.svg/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="nerdyAssets/dropDown.svg/apple-touch-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="nerdyAssets/dropDown.svg/apple-touch-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="nerdyAssets/dropDown.svg/apple-touch-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="nerdyAssets/dropDown.svg/apple-touch-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="nerdyAssets/dropDown.svg/apple-touch-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="nerdyAssets/dropDown.svg/apple-touch-icon-180x180.png">
+	<link rel="icon" type="image/png" href="nerdyAssets/dropDown.svg/favicon-16x16.png" sizes="16x16">
+	<link rel="icon" type="image/png" href="nerdyAssets/dropDown.svg/favicon-32x32.png" sizes="32x32">
+	<link rel="icon" type="image/png" href="nerdyAssets/dropDown.svg/favicon-96x96.png" sizes="96x96">
+	<link rel="icon" type="image/png" href="nerdyAssets/dropDown.svg/android-chrome-192x192.png" sizes="192x192">
+	<meta name="msapplication-square70x70logo" content="nerdyAssets/dropDown.svg/smalltile.png" />
+	<meta name="msapplication-square150x150logo" content="nerdyAssets/dropDown.svg/mediumtile.png" />
+	<meta name="msapplication-wide310x150logo" content="nerdyAssets/dropDown.svg/widetile.png" />
+	<meta name="msapplication-square310x310logo" content="nerdyAssets/dropDown.svg/largetile.png" />
+
+    <title>My Nerdy Valentines</title>
+</head>
+<body>
+	<div class="wrapper">
+		<header>
+		    <h1><span class="nerdy">Nerdy</span> Valentines</h1>
+		    <h2>proclaim your love and your intelligence</h2>
+	    </header>
+	    <div class="content">
+		    <div class="front">
+			    <form action="">
+			    	<label for="phrase">What vibe are you going for?</label>
+			    	<select name="phrase" class="phrase" id="phrase">
+			    		<option value="romantic">romantic</option>
+			    		<option value="flirty">flirty</option>
+			    		<option value="tender">tender</option>
+			    		<option value="cheesy">cheesy</option>
+			    		<option value="passionate">passionate</option>
+			    		<option value="contemporary">contemporary</option>
+			    	</select>
+			    	<label for="number">Quanitfy your love with a number. The larger the number the stronger the devotion.</label>
+			    	<input type="text" name="number" id="number" class="number" required="true" placeholder= "e.g. 1000000000000000">
+			    	<div class="checkbox">
+						<input type="checkbox" id="extraNerdy" name="extraNerdy" class="extraNerdy" value="extraNerdy">
+						<label class="checkboxNerdy" for="extraNerdy">Make it extra nerdy</label> 
+					</div> <!-- end of checkbox -->
+			    	<input type="submit" value="Show me the love">
+			    </form>
+		    </div> <!-- end of form -->
+		    <div class="back">
+		    	<p class="valentine"></p>
+				<p class='small'>(Wow. That's <span class="value"></span> <span class="item"></span>)</p>
+				<button class="copy" data-clipboard-target=".valentine">Copy to Clipboard</button>
+		    	<button class="reset">Give me another one</button>
+		    </div> <!-- end of back -->
+		</div> <!-- end of content -->
+		<footer>
+			<p>built by jenna maaskant </p>
+			<a href="https://twitter.com/jennamaaskant"><i class="fab fa-twitter"></i></a>
+			<p class="disclaimer">number facts provided by <a href="numbersapi.com">the numbers api</a>. if you see a fact you don't think should be included please <a href="mailto:jenna.maask@gmail.com">contact me.</a></p>
+		</footer>
+	</div> <!-- end of wrapper -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <script src="nerdyScripts.js"></script>
+</body>
+</html>

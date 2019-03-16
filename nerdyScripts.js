@@ -1,6 +1,23 @@
+$form = $("form");
+$front = $(".front");
+$back = $(".back");
+$phrase = $(".phrase");
+$number = $(".number");
+$extraNerdy = $(".extraNerdy");
+$reset = $(".reset");
+$nerdy = $(".nerdy");
+$valentine = $(".valentine");
+$value = $(".value");
+$item = $(".item");
+$copy = $(".copy");
+
+
+
+app = {}
+
 //object of options and corresponding components
 
-let info = {
+app.info = {
   romantic: {
     phrase: "For your love, I could wait more lifetimes than ",
     noun: "lifetimes."
@@ -28,77 +45,72 @@ let info = {
 };
 
 // get number trivia fact
-const getTrivia = function(number, type, sentence) {
-  console.log(type);
+app.getTrivia = function(number, type, sentence) {
   $.ajax({
     url: `http://numbersapi.com/${number}/${type}?fragment&notfound=floor&json`,
     method: "GET"
   }).then(function(data) {
-    writeValentine(data.text, data.number, sentence);
+    app.writeValentine(data.text, data.number, sentence);
   });
 };
 
 //write out Valentine
-const writeValentine = function(data, number, sentence) {
-  $(".valentine").html("");
-  $(".value").html("");
-  $(".item").html("");
-  console.log(info[sentence].phrase + data);
-  let userValentine = info[sentence].phrase + data + ".";
-  let userNoun = info[sentence].noun;
+app.writeValentine = function(data, number, sentence) {
+  $valentine.html("");
+  $value.html("");
+  $item.html("");
+  let userValentine = app.info[sentence].phrase + data + ".";
+  let userNoun = app.info[sentence].noun;
   new ClipboardJS(".copy");
-  $(".valentine")
+  $valentine
     .append(userValentine)
     .attr("value", userValentine);
-  $(".value").append(number);
-  $(".item").append(userNoun);
-  $(".copy").on("click", function() {
-    $(".copy")
+  $value.append(number);
+  $item.append(userNoun);
+  $copy.on("click", function() {
+    $copy
       .html("Copied!")
       .addClass("copied");
     setTimeout(() => {
-      $(".copy")
+      $copy
         .html("Copy to Clipboard")
         .removeClass("copied");
     }, 3000);
   });
-  reset();
+  app.reset();
 };
 
 //flip card back around and reset options
-const reset = function() {
-  $(".reset").on("click", function() {
-    console.log("i was clicked");
-    $(".back")
+app.reset = function() {
+  $reset.on("click", function() {
+    $back
       .removeClass("zoomIn")
       .addClass("zoomOut")
       .one("animationend", function() {
-        $(".back").removeClass("visible");
-        $(".front").removeClass("zoomOut");
-        $(".front").addClass("zoomIn");
+        $back.removeClass("visible");
+        $front.removeClass("zoomOut").addClass("zoomIn");
       });
-    $(".number").val("");
-    $(".phrase").val("romantic");
-    $(".nerdy").removeAttr("checked");
+    $number.val("");
+    $phrase.val("romantic");
+    $nerdy.removeAttr("checked");
   });
 };
 
 //get user input
-const getUserInput = function() {
-  $("form").on("submit", function(event) {
-    $(".front")
+app.getUserInput = function() {
+  $form.on("submit", function(event) {
+    $front
       .removeClass("zoomIn")
       .addClass("animated zoomOut")
       .one("animationend", function() {
-        console.log("im done");
-        $(".back").addClass("animated zoomIn visible");
+        $back.addClass("animated zoomIn visible");
       });
-    $(".back").removeClass("zoomOut");
+    $back.removeClass("zoomOut");
     event.preventDefault();
-    let phrase = $(".phrase").val();
-    let userNumber = $(".number").val();
+    let phrase = $phrase.val();
+    let userNumber = $number.val();
     let userType;
-    if ($(".extraNerdy").prop("checked")) {
+    if ($extraNerdy.prop("checked")) {
       userType = "math";
     } else {
       userType = "trivia";
@@ -109,10 +121,10 @@ const getUserInput = function() {
         userNumber = 342;
       }
     }
-    getTrivia(userNumber, userType, phrase);
+    app.getTrivia(userNumber, userType, phrase);
   });
 };
 
 $(function() {
-  getUserInput();
+  app.getUserInput();
 });
